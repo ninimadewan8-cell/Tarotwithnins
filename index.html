@@ -539,7 +539,7 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
       <div class="field">
         <label>Where are you booking from? <span>*</span></label>
         <select name="Country" id="countrySelect" required></select>
-        <div class="country-info" id="countryInfo"></div>
+        <div class="country-info" id="countryInfo" style="display:none;"></div>
       </div>
 
       <div class="field full">
@@ -547,10 +547,11 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
         <div class="radio-group" id="relGroup"></div>
       </div>
 
-      <div class="field full reading-options">
-        <label>Your preferred reading? <span>*</span></label>
-        <div class="radio-group" id="readingGroup"></div>
+      <div class="field full reading-options" id="readingContainer" style="display:none;">
+          <label>Your preferred reading? <span>*</span></label>
+          <div class="radio-group" id="readingGroup"></div>
       </div>
+
 
       <div class="field full">
         <label>Your question? (in detail) <span>*</span></label>
@@ -704,8 +705,19 @@ document.getElementById('relGroup').innerHTML = CONFIG.relationship.map(r=>
 
 function updateCountryDependent(keepReading){
   const k = countrySelect.value, c = CONFIG.countries[k];
+  
+  // Show/hide reading options based on country selection
+  if(k){
+    document.getElementById('readingContainer').style.display = 'block';
+    document.getElementById('countryInfo').style.display = 'block';
+  } else {
+    document.getElementById('readingContainer').style.display = 'none';
+    document.getElementById('countryInfo').style.display = 'none';
+  }
+  
   countryInfo.textContent = `Prices shown in ${c.currency}. Payment options: ${c.payments.join(', ')}.`;
-  readingGroup.innerHTML = CONFIG.readings.map(r=>`
+  readingGroup.innerHTML = CONFIG.readings.map(r=>`...
+
     <label><input type="radio" name="Preferred Reading" value="${r.label} – ${fmt(k,r.id)}" data-id="${r.id}" required ${keepReading===r.id?'checked':''}>
       <b>${r.label}</b><em>${fmt(k,r.id)}</em></label>`).join('');
   payGroup.innerHTML = c.payments.map(p=>
@@ -722,7 +734,7 @@ countrySelect.addEventListener('change',()=>{
   updateCountryDependent(sel ? sel.dataset.id : null);
 });
 readingGroup.addEventListener('change',updatePriceField);
-updateCountryDependent();
+//updateCountryDependent();
 
 /* time table */
 document.getElementById('timeTable').innerHTML =
