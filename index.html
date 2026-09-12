@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>tarotwithinins | Tarot Readings with Compassion & Clarity</title>
-<meta name="description" content="Gentle, judgment-free tarot readings. Book a 30 minute, 1 hour or 1.5 hour session with tarotwithinins.">
 <link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Parisienne&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
-
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito:wght@400;600;700&family=Parisienne&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    THEME
@@ -138,9 +137,6 @@ nav.scrolled{box-shadow:0 4px 20px rgba(74,58,99,.08)}
    READINGS
 ============================================================ */
 .readings{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
-.currency-switch{display:flex;justify-content:center;gap:6px;margin:-20px auto 40px;background:#fff;padding:6px;border-radius:40px;width:max-content;box-shadow:var(--shadow)}
-.currency-switch button{border:none;background:transparent;padding:8px 18px;border-radius:30px;font-weight:600;color:var(--muted);transition:.3s}
-.currency-switch button.active{background:var(--plum);color:#fff}
 .reading-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
 .reading-card{
   background:#fff;border-radius:var(--radius);padding:40px 30px;text-align:center;
@@ -152,8 +148,10 @@ nav.scrolled{box-shadow:0 4px 20px rgba(74,58,99,.08)}
 .reading-card.popular::after{content:"Most Loved";position:absolute;top:18px;right:-34px;background:var(--gold);color:#fff;font-size:.72rem;padding:4px 40px;transform:rotate(45deg);letter-spacing:1px}
 .reading-icon{font-size:2.4rem;margin-bottom:12px}
 .reading-card h3{font-size:1.8rem;margin-bottom:6px}
-.reading-price{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold);font-weight:600;margin:10px 0}
 .reading-card p{color:var(--muted);margin-bottom:24px;font-size:.98rem}
+.reading-intro{max-width:760px;margin:-10px auto 46px;text-align:center}
+.reading-intro h3{font-size:1.9rem;margin-bottom:12px}
+.reading-intro p{color:var(--muted);margin-bottom:12px;font-size:1.02rem}
 
 /* ============================================================
    NOTE
@@ -330,14 +328,13 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
 </head>
 <body>
 
-<!-- floating stars -->
 <div class="stars" id="stars"></div>
 
-<!-- ========================== NAV ========================== -->
+<!-- ================= NAV ================= -->
 <nav id="nav">
   <div class="container nav-inner">
-    <a href="#home" class="brand">
-      <img src="logo.png" alt="tarotwithinins logo" onerror="this.style.display='none'">
+    <a href="#" class="brand">
+      <img src="logo.png" alt="tarotwithinins logo">
       <span>tarotwithinins</span>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -353,10 +350,10 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   </div>
 </nav>
 
-<!-- ========================== HERO ========================== -->
-<header class="hero" id="home">
+<!-- ================= HERO ================= -->
+<header class="hero">
   <div class="container">
-    <img src="logo.png" alt="tarotwithinins" class="hero-logo" onerror="this.style.display='none'">
+    <img src="logo.png" class="hero-logo" alt="tarotwithinins logo">
     <span class="script">welcome to</span>
     <h1>tarotwithinins</h1>
     <p>A safe, compassionate and judgment‑free space to pause, breathe, and find clarity through the cards.</p>
@@ -368,17 +365,15 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   </div>
 </header>
 
-<!-- ========================== ABOUT ========================== -->
+<!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="container about-grid">
     <div class="about-img reveal">
-      <!-- EDIT: add reader.jpg to your repo, or replace with logo.png -->
-      <img src="reader.jpg" alt="Tarot reader" onerror="this.src='logo.png'">
+      <img src="about.jpg" alt="Tarot reader"> <!-- EDIT: confirm your about photo filename -->
     </div>
     <div class="about-text reveal">
-      <span class="script" style="font-size:1.8rem;color:var(--plum-2)">about me</span>
+      <span class="script" style="color:var(--plum-2);font-size:1.6rem">about me</span>
       <h2>Hello, I'm your reader ✨</h2>
-      <!-- EDIT: replace with your real bio -->
       <p>I prioritise creating a safe, compassionate, and judgment‑free space where you can feel comfortable being open and honest about what you're experiencing.</p>
       <p>My approach is to gently guide you through your life path — whether you're navigating struggles, facing obstacles, seeking clarity, or simply feeling unsure about your next step.</p>
       <p>I want each reading to feel like a space where you can pause, breathe, express what's on your mind, and feel truly heard. Through the cards, we explore your situation together, bringing perspective and guidance while allowing you the space to arrive at your own understanding.</p>
@@ -390,7 +385,7 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   </div>
 </section>
 
-<!-- ========================== READINGS ========================== -->
+<!-- ================= READINGS ================= -->
 <section id="readings" class="readings">
   <div class="container">
     <div class="section-title reveal">
@@ -398,12 +393,16 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
       <h2>✨ Offered Readings ✨</h2>
       <div class="divider"></div>
     </div>
-    <div class="currency-switch reveal" id="currencySwitch"></div>
+    <div class="reading-intro reveal">
+      <h3>🔮 Celtic Cross Reading</h3>
+      <p>Every session I offer is a <b>Celtic Cross reading</b> — one of the most trusted and in‑depth spreads in tarot. Ten cards are laid out to explore your situation from every angle: where you are right now, what's challenging you, the roots of the matter, the recent past, what's possible ahead, the near future, your own attitude, outside influences, your hopes and fears, and the likely outcome.</p>
+      <p>It gives us a full picture rather than a quick answer, so we can go deep on what truly matters to you. Simply choose how much time you'd like for your session:</p>
+    </div>
     <div class="reading-grid" id="readingGrid"></div>
   </div>
 </section>
 
-<!-- ========================== A LITTLE NOTE ========================== -->
+<!-- ================= NOTE ================= -->
 <section id="note">
   <div class="container">
     <div class="section-title reveal">
@@ -413,7 +412,6 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
     </div>
     <div class="note-wrap reveal">
       <div class="note-grid">
-        <!-- EDIT: adjust wording to match your image exactly -->
         <div class="note-item">
           <div class="note-icon">🕯️</div>
           <h3>Before the Session</h3>
@@ -439,7 +437,7 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   </div>
 </section>
 
-<!-- ========================== FEEDBACK ========================== -->
+<!-- ================= TESTIMONIALS ================= -->
 <section id="feedback" class="testimonials">
   <div class="container">
     <div class="section-title reveal">
@@ -451,142 +449,144 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   </div>
 </section>
 
-<!-- ========================== CERTIFICATE ========================== -->
+<!-- ================= CERTIFICATE ================= -->
 <section id="certificate">
   <div class="container cert-grid">
-    <div class="cert-img reveal" onclick="openLightbox('certificate.jpg')">
-      <!-- EDIT: add certificate.jpg to your repo -->
-      <img src="certificate.jpg" alt="Tarot certification" onerror="this.src='logo.png'">
+    <div class="cert-img reveal" onclick="window.open('certificate.pdf','_blank')">
+      <embed src="certificate.pdf" type="application/pdf"
+             style="width:100%;height:420px;border-radius:12px;pointer-events:none">
     </div>
     <div class="cert-text reveal">
-      <span class="script" style="font-size:1.8rem;color:var(--plum-2)">credentials</span>
+      <span class="script" style="color:var(--plum-2);font-size:1.6rem">credentials</span>
       <h2>Certified Tarot Reader</h2>
-      <div class="cert-badge">🎓 <!-- EDIT -->Professional Tarot Reading Certification</div>
-      <!-- EDIT: certificate details -->
+      <div class="cert-badge">🎓 Professional Tarot Reading Certification</div>
       <p>I have completed formal training in tarot reading, covering the Major and Minor Arcana, spreads, intuitive interpretation and reader ethics. My practice is grounded in both study and compassion.</p>
-      <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Tap the certificate to view it in full size.</p>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:14px">Tap the certificate to view it in full size.</p>
     </div>
   </div>
 </section>
 
-<!-- ========================== CTA ========================== -->
-<section class="cta" id="contact">
-  <div class="container reveal">
-    <span class="script" style="font-size:2rem;opacity:.9">ready when you are</span>
+<!-- ================= CTA ================= -->
+<section class="cta">
+  <div class="container">
+    <span class="script" style="font-size:1.8rem;opacity:.9">ready when you are</span>
     <h2>Let the cards guide your next step</h2>
     <p>Book your reading today. Once you submit the form, I'll personally reach out to confirm your time and payment details.</p>
     <button class="btn btn-primary" onclick="openBooking()">✦ Book an Appointment</button>
   </div>
 </section>
 
-<!-- ========================== FOOTER ========================== -->
-<footer>
+<!-- ================= FOOTER / CONTACT ================= -->
+<footer id="contact">
   <div class="container">
-    <img src="logo.png" alt="" class="footer-logo" onerror="this.style.display='none'">
+    <img src="logo.png" class="footer-logo" alt="tarotwithinins logo">
     <div class="script" style="font-size:1.8rem;color:var(--plum)">tarotwithinins</div>
     <div class="socials" id="socials"></div>
-    <p style="color:var(--muted);font-size:.9rem">Readings are for guidance and reflection, not a substitute for professional medical, legal or financial advice.</p>
+    <p style="font-size:.9rem;color:var(--muted);max-width:520px;margin:0 auto">Readings are for guidance and reflection, not a substitute for professional medical, legal or financial advice.</p>
     <p class="copy">© <span id="year"></span> tarotwithinins · Made with 🤍</p>
   </div>
 </footer>
 
 <button class="btn btn-primary sticky-book" onclick="openBooking()">✦ Book Now</button>
 
-<!-- ========================== BOOKING MODAL ========================== -->
-<div class="modal" id="bookingModal" role="dialog" aria-modal="true">
+<!-- ================= BOOKING MODAL ================= -->
+<div class="modal" id="bookingModal">
   <div class="modal-box">
     <div class="modal-head">
       <button class="modal-close" onclick="closeBooking()" aria-label="Close">✕</button>
-      <span class="script" style="font-size:1.8rem;color:var(--plum-2)">let's begin</span>
+      <span class="script" style="color:var(--plum-2);font-size:1.6rem">let's begin</span>
       <h2>Booking Details</h2>
       <p>Fill this in and I'll get back to you to confirm your slot 🌙</p>
     </div>
 
-    <div class="modal-body" id="formWrap">
-      <div class="intro-note">
-        I prioritise creating a safe, compassionate, and judgment‑free space. Through the cards, we explore your situation together — bringing perspective and guidance while allowing you the space to arrive at your own understanding. Fields marked <span style="color:#d46a8a">*</span> are required.
+<div class="modal-body" id="formWrap">
+  <div class="intro-note">
+    I prioritise creating a safe, compassionate, and judgment‑free space. Through the cards, we explore your situation together — bringing perspective and guidance while allowing you the space to arrive at your own understanding. Fields marked <span style="color:#d46a8a">*</span> are required.
+  </div>
+
+  <form id="bookingForm" action="https://formspree.io/f/xjyvdogb" method="POST" novalidate>
+    <div class="form-grid">
+
+      <div class="field">
+        <label>Email <span>*</span></label>
+        <input type="email" name="Email" required placeholder="you@example.com">
       </div>
 
-      <form id="bookingForm" action="https://formspree.io/f/xjyvdogb" method="POST" novalidate>
-        <div class="form-grid">
+      <div class="field">
+        <label>Full Name <span>*</span></label>
+        <input type="text" name="Full Name" required placeholder="Your full name">
+      </div>
 
-          <div class="field">
-            <label>Email <span>*</span></label>
-            <input type="email" name="Email" required placeholder="you@example.com">
-          </div>
+      <div class="field">
+        <label>Age <span>*</span></label>
+        <input type="number" name="Age" required min="13" max="100" placeholder="e.g. 24">
+      </div>
 
-          <div class="field">
-            <label>Full Name <span>*</span></label>
-            <input type="text" name="Full Name" required placeholder="Your full name">
-          </div>
+      <div class="field">
+        <label>Where are you booking from? <span>*</span></label>
+        <select name="Country" id="countrySelect" required></select>
+        <div class="country-info" id="countryInfo"></div>
+      </div>
 
-          <div class="field">
-            <label>Age <span>*</span></label>
-            <input type="number" name="Age" required min="13" max="100" placeholder="e.g. 24">
-          </div>
+      <div class="field full">
+        <label>Relationship Status <span>*</span></label>
+        <div class="radio-group" id="relGroup"></div>
+      </div>
 
-          <div class="field">
-            <label>Where are you booking from? <span>*</span></label>
-            <select name="Country" id="countrySelect" required></select>
-            <div class="country-info" id="countryInfo"></div>
-          </div>
+      <div class="field full reading-options">
+        <label>Your preferred reading? <span>*</span></label>
+        <div class="radio-group" id="readingGroup"></div>
+      </div>
 
-          <div class="field full">
-            <label>Relationship Status <span>*</span></label>
-            <div class="radio-group" id="relGroup"></div>
-          </div>
+      <div class="field full">
+        <label>Your question? (in detail) <span>*</span></label>
+        <textarea name="Question" required placeholder="Share what's on your mind. The more detail you give, the clearer the guidance."></textarea>
+      </div>
 
-          <div class="field full reading-options">
-            <label>Your preferred reading? <span>*</span></label>
-            <div class="radio-group" id="readingGroup"></div>
-          </div>
+      <div class="field full">
+        <label>Payment Method <span>*</span></label>
+        <div class="radio-group" id="payGroup"></div>
+        <small id="payNote"></small>
+      </div>
 
-          <div class="field full">
-            <label>Your question? (in detail) <span>*</span></label>
-            <textarea name="Question" required placeholder="Share what's on your mind. The more detail you give, the clearer the guidance."></textarea>
-          </div>
-
-          <div class="field full">
-            <label>Payment Method <span>*</span></label>
-            <div class="radio-group" id="payGroup"></div>
-            <small id="payNote"></small>
-          </div>
-
-          <div class="field full">
-            <label>Tick your preferred time <span>*</span></label>
-            <small style="margin-bottom:6px">Select all slots that work for you. Times are in Nepal Time (NPT, GMT+5:45). Your timezone: <b id="tzLabel">—</b></small>
-            <div style="overflow-x:auto">
-              <table class="time-table" id="timeTable"></table>
-            </div>
-          </div>
-
-          <!-- hidden extras -->
-          <input type="hidden" name="Client Timezone" id="tzField">
-          <input type="hidden" name="Selected Price" id="priceField">
-          <input type="hidden" name="_subject" value="✦ New Tarot Booking – tarotwithinins">
-          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
-
-          <div class="status" id="formStatus"></div>
-
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary" id="submitBtn">✦ Send Booking Request</button>
-            <small>By submitting, you agree that readings are for guidance only and that your information stays confidential.</small>
-          </div>
+      <div class="field full">
+        <label>Tick your preferred time <span>*</span></label>
+        <small style="margin-bottom:6px">Select all slots that work for you. Times are in Nepal Time (NPT, GMT+5:45). Your timezone: <b id="tzLabel">—</b></small>
+        <div style="overflow-x:auto">
+          <table class="time-table" id="timeTable"></table>
         </div>
-      </form>
-    </div>
+      </div>
 
-    <div class="success-view" id="successView">
-      <div class="big">🌙</div>
-      <h3>Thank you, <span id="successName"></span>!</h3>
-      <p>Your booking request has been received. I'll reach out to your email shortly to confirm your slot and share payment details.</p>
-      <button class="btn btn-primary" onclick="closeBooking()">Back to site</button>
+      <!-- hidden extras -->
+      <input type="hidden" name="Client Timezone" id="tzField">
+      <input type="hidden" name="Selected Price" id="priceField">
+      <input type="hidden" name="_subject" value="✦ New Tarot Booking – tarotwithinins">
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+
+      <div class="status" id="formStatus"></div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="submitBtn">✦ Send Booking Request</button>
+        <small>By submitting, you agree that readings are for guidance only and that your information stays confidential.</small>
+      </div>
     </div>
+  </form>
+</div>
+
+<div class="success-view" id="successView">
+  <div class="big">🌙</div>
+  <h3>Thank you, <span id="successName"></span>!</h3>
+  <p>Your booking request has been received. I'll reach out to your email shortly to confirm your slot and share payment details.</p>
+  <button class="btn btn-primary" onclick="closeBooking()">Back to site</button>
+</div>
+
   </div>
 </div>
 
 <!-- lightbox -->
-<div class="lightbox" id="lightbox" onclick="this.classList.remove('show')"><img id="lightboxImg" src="" alt=""></div>
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('show')">
+  <img id="lightboxImg" alt="">
+</div>
 
 <script>
 /* ============================================================
@@ -600,7 +600,7 @@ const CONFIG = {
     { id:"1.5 Hours",  label:"1.5 Hours",  icon:"🔮", desc:"Ask as many questions as we can comfortably cover within 1.5 hours." }
   ],
 
-  // --- Country-based pricing & payment (EDIT prices for India / International) ---
+  // --- Country-based pricing & payment (NPR and EUR only) ---
   countries: {
     "Nepal": {
       currency:"NPR", symbol:"NPR ",
@@ -608,17 +608,11 @@ const CONFIG = {
       payments:["eSewa","Bank transfer"],
       note:"Payment details will be shared after your booking is confirmed."
     },
-    "India": {
-      currency:"INR", symbol:"₹",
-      prices:{ "30 minutes":650, "1 Hour":1100, "1.5 Hours":1500 },   // EDIT
-      payments:["UPI","Bank transfer"],                               // EDIT
-      note:"UPI ID / bank details will be shared after confirmation."
-    },
-    "Other (International)": {
-      currency:"USD", symbol:"$",
-      prices:{ "30 minutes":10, "1 Hour":17, "1.5 Hours":24 },        // EDIT
-      payments:["PayPal","Wise","Bank transfer"],                     // EDIT
-      note:"Payment link will be sent to your email after confirmation."
+    "Europe": {
+      currency:"EUR", symbol:"€",
+      prices:{ "30 minutes":10, "1 Hour":17, "1.5 Hours":24 },        // EDIT your EUR prices
+      payments:["PayPal","Bank transfer"],                             // EDIT if needed
+      note:"Payment details will be sent to your email after confirmation."
     }
   },
 
@@ -626,26 +620,25 @@ const CONFIG = {
   days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
   slots:["Morning","Afternoon","Evening"],
 
-  // --- Testimonials (EDIT with real feedback) ---
+  // --- Testimonials (EDIT: write your real feedback here) ---
   testimonials:[
-    { text:"I felt so heard and safe throughout the reading. The guidance was gentle but incredibly accurate — exactly what I needed to move forward.", name:"S. Shrestha", meta:"1 Hour Reading" },
-    { text:"Honestly didn't expect to feel this much clarity in 30 minutes. She takes her time and doesn't rush you at all.", name:"Priya R.", meta:"30 Minute Reading" },
-    { text:"The session felt like a warm conversation with someone who truly cares. I left with perspective and peace.", name:"A. Karki", meta:"1.5 Hour Reading" }
+    { text:"WRITE THE FIRST REAL FEEDBACK HERE.", name:"Client name or initials", meta:"e.g. 1 Hour Reading" },
+    { text:"WRITE THE SECOND REAL FEEDBACK HERE.", name:"Client name or initials", meta:"e.g. 30 Minute Reading" },
+    { text:"WRITE THE THIRD REAL FEEDBACK HERE.", name:"Client name or initials", meta:"e.g. 1.5 Hour Reading" }
   ],
 
-  // --- Contact links (EDIT) ---
+  // --- Contact links ---
   socials:[
-    { icon:"📷", label:"Instagram", url:"https://instagram.com/tarotwithinins" },
-    { icon:"✉️", label:"Email",     url:"mailto:hello@example.com" },
-    { icon:"💬", label:"WhatsApp",  url:"https://wa.me/9779800000000" }
+    { icon:"📷", label:"Instagram", url:"https://www.instagram.com/tarotwithnins?stkn=ZHpsY2FyMGJ6OHdv&utm_source=qr" },
+    { icon:"✉️", label:"Email",     url:"mailto:hello@example.com" },          // EDIT your email
+    { icon:"💬", label:"WhatsApp",  url:"https://wa.me/9779800000000" }        // EDIT your WhatsApp number
   ]
 };
 
 /* ============================================================
-   RENDER: readings section with currency switch
+   RENDER: readings section
 ============================================================ */
 const readingGrid = document.getElementById('readingGrid');
-const currencySwitch = document.getElementById('currencySwitch');
 let activeCountry = "Nepal";
 
 function fmt(country, id){
@@ -657,17 +650,11 @@ function renderReadings(){
     <div class="reading-card reveal visible ${r.popular?'popular':''}" style="transition-delay:${i*.1}s">
       <div class="reading-icon">${r.icon}</div>
       <h3>${r.label}</h3>
-      <div class="reading-price">${fmt(activeCountry,r.id)}</div>
       <p>${r.desc}</p>
       <button class="btn btn-outline" onclick="openBooking('${r.id}')">Book this</button>
     </div>`).join('');
 }
-function renderSwitch(){
-  currencySwitch.innerHTML = Object.keys(CONFIG.countries).map(k=>
-    `<button class="${k===activeCountry?'active':''}" onclick="setCountry('${k}')">${CONFIG.countries[k].currency}</button>`).join('');
-}
-function setCountry(k){ activeCountry=k; renderSwitch(); renderReadings(); }
-renderSwitch(); renderReadings();
+renderReadings();
 
 /* testimonials */
 document.getElementById('testiGrid').innerHTML = CONFIG.testimonials.map((t,i)=>`
