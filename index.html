@@ -617,6 +617,12 @@ const CONFIG = {
 
   // --- Country-based pricing & payment (NPR and EUR only) ---
   countries: {
+     "Other": {
+      currency:"USD", symbol:"$",
+      prices:{ "30 minutes":17, "1 Hour":35, "1.5 Hours"50:},
+      payments:["PayPal","Bank transfer"],
+      note:"Payment details will be sent to your email after confirmation."
+    },
     "Nepal": {
       currency:"NPR", symbol:"NPR ",
       prices:{ "30 minutes":1000, "1 Hour":1800, "1.5 Hours":2500 },
@@ -625,16 +631,10 @@ const CONFIG = {
     },
     "Europe": {
       currency:"EUR", symbol:"€",
-      prices:{ "30 minutes":18, "1 Hour":28, "1.5 Hours":38 },        // EDIT your EUR prices
+      prices:{ "30 minutes":15, "1 Hour":30, "1.5 Hours":45 },        // EDIT your EUR prices
       payments:["PayPal","Bank transfer"],                             // EDIT if needed
       note:"Payment details will be sent to your email after confirmation."
-    },
-      "Other": {
-      currency:"USD", symbol:"$",
-      prices:{ "30 minutes":20, "1 Hour":30, "1.5 Hours":40 },
-      payments:["PayPal","Bank transfer"],
-      note:"Payment details will be sent to your email after confirmation."
-    }
+    }   
   },
 
   relationship:["Single","In a Relationship","Engaged or Married","Complicated","Divorced"],
