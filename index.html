@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tarotwithinins | Tarot Readings with Compassion & Clarity</title>
+<meta name="description" content="Gentle, judgment-free tarot readings. Book a 30 minute, 1 hour or 1.5 hour session with tarotwithinins.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Parisienne&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   THEME
+============================================================ */
+:root{
+  --cream:#fbf7f3;
+  --cream-2:#f6eef0;
+  --lavender:#c9b8e4;
+  --lavender-2:#eee7f7;
+  --pink:#f4c9d6;
+  --pink-2:#fbe8ee;
+  --sage:#a9c4b0;
+  --sage-2:#e6efe8;
+  --plum:#4a3a63;
+  --plum-2:#6d5a8a;
+  --gold:#c9a45c;
+  --text:#4a3f5b;
+  --muted:#8a7f9c;
+  --shadow:0 10px 30px rgba(74,58,99,.10);
+  --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito',sans-serif;
+  color:var(--text);
+  background:var(--cream);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--plum);font-weight:600;line-height:1.2}
+.script{font-family:'Parisienne',cursive;font-weight:400}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.container{width:min(1140px,92%);margin:0 auto}
+section{padding:90px 0;position:relative}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title .script{color:var(--plum-2);font-size:1.8rem;display:block;margin-bottom:-6px}
+.section-title h2{font-size:clamp(2rem,4vw,2.9rem)}
+.section-title .divider{width:80px;height:2px;margin:16px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent);position:relative}
+.section-title .divider::after{content:"✦";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--cream);color:var(--gold);padding:0 8px;font-size:.8rem}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 30px;border-radius:50px;border:none;
+  font-weight:600;font-size:1rem;letter-spacing:.3px;
+  transition:.3s;position:relative;overflow:hidden;
+}
+.btn-primary{background:linear-gradient(135deg,var(--plum),var(--plum-2));color:#fff;box-shadow:0 8px 24px rgba(74,58,99,.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(74,58,99,.35)}
+.btn-outline{background:transparent;color:var(--plum);border:1.5px solid var(--plum)}
+.btn-outline:hover{background:var(--plum);color:#fff}
+
+/* ============================================================
+   FLOATING BACKGROUND STARS
+============================================================ */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.stars span{position:absolute;color:var(--gold);opacity:.35;animation:twinkle 6s ease-in-out infinite;font-size:14px}
+@keyframes twinkle{0%,100%{opacity:.15;transform:translateY(0) scale(.9)}50%{opacity:.6;transform:translateY(-12px) scale(1.1)}}
+
+/* ============================================================
+   NAV
+============================================================ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(251,247,243,.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(201,164,92,.15);
+  transition:.3s;
+}
+nav.scrolled{box-shadow:0 4px 20px rgba(74,58,99,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.brand span{font-family:'Parisienne',cursive;font-size:1.7rem;color:var(--plum)}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{font-weight:600;font-size:.95rem;color:var(--plum);position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1.5px;background:var(--gold);transition:.3s}
+.nav-links a:hover::after{width:100%}
+.nav-links .btn{padding:10px 22px;font-size:.9rem}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px}
+.hamburger span{width:26px;height:2px;background:var(--plum);transition:.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;text-align:center;
+  padding:130px 0 80px;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(244,201,214,.5),transparent 40%),
+    radial-gradient(circle at 85% 80%,rgba(201,184,228,.5),transparent 40%),
+    radial-gradient(circle at 80% 15%,rgba(169,196,176,.35),transparent 35%),
+    var(--cream);
+}
+.hero-logo{
+  width:min(260px,60vw);margin:0 auto 26px;border-radius:50%;
+  animation:float 6s ease-in-out infinite;
+  filter:drop-shadow(0 20px 30px rgba(74,58,99,.18));
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.hero .script{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--plum-2);display:block}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);margin:0 0 14px}
+.hero p{max-width:640px;margin:0 auto 34px;font-size:1.1rem;color:var(--muted)}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.scroll-hint{margin-top:60px;color:var(--gold);font-size:1.4rem;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+.about-img{position:relative}
+.about-img img{border-radius:var(--radius);box-shadow:var(--shadow);aspect-ratio:4/5;object-fit:cover}
+.about-img::before{
+  content:"";position:absolute;inset:-14px;border:1.5px solid var(--gold);border-radius:var(--radius);
+  opacity:.5;z-index:-1;transform:rotate(-2deg);
+}
+.about-text h2{font-size:2.4rem;margin-bottom:18px}
+.about-text p{margin-bottom:16px;font-size:1.02rem}
+.about-highlights{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
+.about-highlights span{background:var(--lavender-2);color:var(--plum);padding:8px 16px;border-radius:30px;font-size:.88rem;font-weight:600}
+
+/* ============================================================
+   READINGS
+============================================================ */
+.readings{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
+.currency-switch{display:flex;justify-content:center;gap:6px;margin:-20px auto 40px;background:#fff;padding:6px;border-radius:40px;width:max-content;box-shadow:var(--shadow)}
+.currency-switch button{border:none;background:transparent;padding:8px 18px;border-radius:30px;font-weight:600;color:var(--muted);transition:.3s}
+.currency-switch button.active{background:var(--plum);color:#fff}
+.reading-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+.reading-card{
+  background:#fff;border-radius:var(--radius);padding:40px 30px;text-align:center;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+  transition:.4s;border:1px solid transparent;
+}
+.reading-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--pink),var(--lavender),var(--sage))}
+.reading-card:hover{transform:translateY(-10px);border-color:rgba(201,164,92,.4)}
+.reading-card.popular::after{content:"Most Loved";position:absolute;top:18px;right:-34px;background:var(--gold);color:#fff;font-size:.72rem;padding:4px 40px;transform:rotate(45deg);letter-spacing:1px}
+.reading-icon{font-size:2.4rem;margin-bottom:12px}
+.reading-card h3{font-size:1.8rem;margin-bottom:6px}
+.reading-price{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold);font-weight:600;margin:10px 0}
+.reading-card p{color:var(--muted);margin-bottom:24px;font-size:.98rem}
+
+/* ============================================================
+   NOTE
+============================================================ */
+.note-wrap{
+  background:#fff;border-radius:30px;padding:60px 50px;box-shadow:var(--shadow);
+  position:relative;border:1px solid rgba(201,164,92,.25);
+}
+.note-wrap::before,.note-wrap::after{content:"❀";position:absolute;font-size:2.4rem;color:var(--pink);opacity:.7}
+.note-wrap::before{top:14px;left:20px}
+.note-wrap::after{bottom:14px;right:20px;color:var(--lavender)}
+.note-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:30px}
+.note-item{text-align:center;padding:10px}
+.note-icon{width:64px;height:64px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;font-size:1.6rem;background:var(--lavender-2);color:var(--plum)}
+.note-item:nth-child(2) .note-icon{background:var(--pink-2)}
+.note-item:nth-child(3) .note-icon{background:var(--sage-2)}
+.note-item:nth-child(4) .note-icon{background:#fdf3e2}
+.note-item h3{font-size:1.5rem;margin-bottom:8px}
+.note-item p{font-size:.95rem;color:var(--muted)}
+
+/* ============================================================
+   TESTIMONIALS
+============================================================ */
+.testimonials{background:radial-gradient(circle at 50% 0%,rgba(201,184,228,.35),transparent 60%),var(--cream)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.testi-card{background:#fff;border-radius:var(--radius);padding:34px 30px;box-shadow:var(--shadow);position:relative;transition:.3s}
+.testi-card:hover{transform:translateY(-6px)}
+.testi-card::before{content:"“";position:absolute;top:8px;left:20px;font-family:'Cormorant Garamond',serif;font-size:5rem;color:var(--pink);line-height:1;opacity:.8}
+.testi-card p{position:relative;font-style:italic;margin-bottom:18px;color:var(--text)}
+.testi-stars{color:var(--gold);letter-spacing:2px;margin-bottom:8px}
+.testi-name{font-weight:600;color:var(--plum)}
+.testi-name small{display:block;font-weight:400;color:var(--muted)}
+
+/* ============================================================
+   CERTIFICATE
+============================================================ */
+.cert-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.cert-img{padding:14px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(201,164,92,.3);cursor:zoom-in;transition:.3s}
+.cert-img:hover{transform:scale(1.02)}
+.cert-img img{border-radius:12px}
+.cert-text h2{font-size:2.4rem;margin-bottom:16px}
+.cert-badge{display:inline-flex;align-items:center;gap:10px;background:#fdf3e2;color:#8a6a2c;padding:10px 18px;border-radius:30px;font-weight:600;margin-bottom:20px;font-size:.9rem}
+
+/* ============================================================
+   CTA + FOOTER
+============================================================ */
+.cta{
+  text-align:center;color:#fff;
+  background:linear-gradient(135deg,var(--plum) 0%,var(--plum-2) 100%);
+  position:relative;overflow:hidden;
+}
+.cta::before{content:"☾";position:absolute;font-size:22rem;opacity:.06;right:-40px;top:-80px;font-family:serif}
+.cta h2{color:#fff;font-size:clamp(2rem,4vw,3rem);margin-bottom:12px}
+.cta p{opacity:.85;max-width:560px;margin:0 auto 30px}
+.cta .btn-primary{background:#fff;color:var(--plum)}
+footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
+.footer-logo{width:70px;margin:0 auto 12px;border-radius:50%}
+.socials{display:flex;justify-content:center;gap:14px;margin:18px 0}
+.socials a{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow);color:var(--plum);font-size:1.1rem;transition:.3s}
+.socials a:hover{background:var(--plum);color:#fff;transform:translateY(-4px)}
+.copy{font-size:.85rem;color:var(--muted);margin-top:14px}
+
+/* ============================================================
+   STICKY MOBILE BOOK BUTTON
+============================================================ */
+.sticky-book{display:none;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:90;box-shadow:0 10px 30px rgba(74,58,99,.4)}
+
+/* ============================================================
+   BOOKING MODAL
+============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:200;background:rgba(74,58,99,.55);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;visibility:hidden;transition:.35s;
+}
+.modal.show{opacity:1;visibility:visible}
+.modal-box{
+  background:var(--cream);width:min(820px,100%);max-height:92vh;overflow-y:auto;
+  border-radius:28px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.3);
+  transform:translateY(30px) scale(.97);transition:.35s;
+}
+.modal.show .modal-box{transform:none}
+.modal-head{
+  padding:36px 40px 26px;text-align:center;
+  background:linear-gradient(135deg,var(--pink-2),var(--lavender-2));
+  border-radius:28px 28px 0 0;position:relative;
+}
+.modal-head h2{font-size:2.2rem}
+.modal-head p{color:var(--muted);font-size:.95rem;margin-top:6px}
+.modal-close{position:absolute;top:16px;right:18px;width:38px;height:38px;border-radius:50%;border:none;background:#fff;font-size:1.3rem;color:var(--plum);box-shadow:var(--shadow);transition:.3s}
+.modal-close:hover{background:var(--plum);color:#fff;transform:rotate(90deg)}
+.modal-body{padding:30px 40px 40px}
+.intro-note{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;border-radius:0 14px 14px 0;font-size:.93rem;color:var(--muted);margin-bottom:26px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-weight:600;color:var(--plum);font-size:.92rem}
+.field label span{color:#d46a8a}
+.field input,.field select,.field textarea{
+  padding:13px 16px;border-radius:14px;border:1.5px solid #e6dfe9;background:#fff;
+  font-family:inherit;font-size:.97rem;color:var(--text);transition:.3s;width:100%;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--lavender);box-shadow:0 0 0 4px rgba(201,184,228,.3)}
+.field textarea{min-height:130px;resize:vertical}
+.field small{color:var(--muted);font-size:.8rem}
+.radio-group{display:flex;flex-wrap:wrap;gap:10px}
+.radio-group label{
+  position:relative;cursor:pointer;padding:10px 16px;border-radius:30px;border:1.5px solid #e6dfe9;background:#fff;
+  font-size:.9rem;font-weight:600;color:var(--text);transition:.25s;
+}
+.radio-group input{position:absolute;opacity:0;pointer-events:none}
+.radio-group label:has(input:checked){background:var(--plum);color:#fff;border-color:var(--plum)}
+.reading-options .radio-group label{flex:1 1 180px;text-align:center;padding:14px}
+.reading-options .radio-group label b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.3rem}
+.reading-options .radio-group label em{font-style:normal;font-size:.85rem;opacity:.85}
+.country-info{margin-top:6px;font-size:.85rem;color:var(--plum-2);background:var(--lavender-2);padding:8px 12px;border-radius:10px}
+.time-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:14px;overflow:hidden;border:1.5px solid #e6dfe9}
+.time-table th,.time-table td{padding:10px 8px;text-align:center;font-size:.9rem;border-bottom:1px solid #f1ecf3}
+.time-table th{background:var(--lavender-2);color:var(--plum);font-weight:600}
+.time-table td:first-child{text-align:left;font-weight:600;color:var(--plum);padding-left:14px}
+.time-table tr:last-child td{border-bottom:none}
+.time-table input{width:20px;height:20px;accent-color:var(--plum);cursor:pointer}
+.form-actions{grid-column:1/-1;margin-top:10px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.form-actions .btn{width:100%;justify-content:center;font-size:1.05rem;padding:16px}
+.form-actions small{color:var(--muted);text-align:center;font-size:.82rem}
+.status{grid-column:1/-1;padding:14px 18px;border-radius:14px;text-align:center;font-weight:600;display:none}
+.status.ok{display:block;background:var(--sage-2);color:#3f6b4a}
+.status.err{display:block;background:#fbe3e8;color:#a33b58}
+.success-view{text-align:center;padding:50px 30px;display:none}
+.success-view .big{font-size:4rem;margin-bottom:10px}
+.success-view h3{font-size:2rem;margin-bottom:10px}
+.success-view p{color:var(--muted);max-width:460px;margin:0 auto 24px}
+.hp{position:absolute;left:-9999px;opacity:0}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:300;display:none;place-items:center;padding:20px;cursor:zoom-out}
+.lightbox.show{display:grid}
+.lightbox img{max-height:90vh;border-radius:12px}
+
+/* ============================================================
+   REVEAL ANIMATION
+============================================================ */
+.reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:900px){
+  .about-grid,.cert-grid{grid-template-columns:1fr;gap:36px}
+  .about-img{max-width:380px;margin:0 auto}
+  .note-wrap{padding:50px 28px}
+}
+@media(max-width:768px){
+  section{padding:70px 0}
+  .nav-links{
+    position:fixed;top:74px;right:0;bottom:0;width:min(300px,80%);
+    background:var(--cream);flex-direction:column;align-items:flex-start;
+    padding:36px 30px;gap:22px;transform:translateX(100%);transition:.35s;
+    box-shadow:-10px 0 30px rgba(74,58,99,.12);
+  }
+  .nav-links.open{transform:none}
+  .hamburger{display:flex}
+  .sticky-book{display:inline-flex}
+  .form-grid{grid-template-columns:1fr}
+  .modal-body{padding:24px 20px 34px}
+  .modal-head{padding:30px 20px 22px}
+  .modal{padding:10px}
+  .time-table th,.time-table td{padding:8px 4px;font-size:.82rem}
+  .cta{padding-bottom:110px}
+  footer{padding-bottom:90px}
+}
+</style>
+</head>
+<body>
+
+<!-- floating stars -->
+<div class="stars" id="stars"></div>
+
+<!-- ========================== NAV ========================== -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="brand">
+      <img src="logo.png" alt="tarotwithinins logo" onerror="this.style.display='none'">
+      <span>tarotwithinins</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#readings">Readings</a></li>
+      <li><a href="#note">A Little Note</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+      <li><a href="#certificate">Certificate</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="btn btn-primary" onclick="openBooking()">✦ Book a Reading</button></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ========================== HERO ========================== -->
+<header class="hero" id="home">
+  <div class="container">
+    <img src="logo.png" alt="tarotwithinins" class="hero-logo" onerror="this.style.display='none'">
+    <span class="script">welcome to</span>
+    <h1>tarotwithinins</h1>
+    <p>A safe, compassionate and judgment‑free space to pause, breathe, and find clarity through the cards.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="openBooking()">✦ Book an Appointment</button>
+      <a href="#readings" class="btn btn-outline">Explore Readings</a>
+    </div>
+    <div class="scroll-hint">☾</div>
+  </div>
+</header>
+
+<!-- ========================== ABOUT ========================== -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-img reveal">
+      <!-- EDIT: add reader.jpg to your repo, or replace with logo.png -->
+      <img src="reader.jpg" alt="Tarot reader" onerror="this.src='logo.png'">
+    </div>
+    <div class="about-text reveal">
+      <span class="script" style="font-size:1.8rem;color:var(--plum-2)">about me</span>
+      <h2>Hello, I'm your reader ✨</h2>
+      <!-- EDIT: replace with your real bio -->
+      <p>I prioritise creating a safe, compassionate, and judgment‑free space where you can feel comfortable being open and honest about what you're experiencing.</p>
+      <p>My approach is to gently guide you through your life path — whether you're navigating struggles, facing obstacles, seeking clarity, or simply feeling unsure about your next step.</p>
+      <p>I want each reading to feel like a space where you can pause, breathe, express what's on your mind, and feel truly heard. Through the cards, we explore your situation together, bringing perspective and guidance while allowing you the space to arrive at your own understanding.</p>
+      <div class="about-highlights">
+        <span>🌸 Compassionate</span><span>🔒 Confidential</span><span>🎓 Certified Reader</span><span>🌍 Online Worldwide</span>
+      </div>
+      <button class="btn btn-primary" onclick="openBooking()">Book Your Session</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== READINGS ========================== -->
+<section id="readings" class="readings">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="script">what i offer</span>
+      <h2>✨ Offered Readings ✨</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="currency-switch reveal" id="currencySwitch"></div>
+    <div class="reading-grid" id="readingGrid"></div>
+  </div>
+</section>
+
+<!-- ========================== A LITTLE NOTE ========================== -->
+<section id="note">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="script">please read</span>
+      <h2>A Little Note</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="note-wrap reveal">
+      <div class="note-grid">
+        <!-- EDIT: adjust wording to match your image exactly -->
+        <div class="note-item">
+          <div class="note-icon">🕯️</div>
+          <h3>Before the Session</h3>
+          <p>Take a moment to reflect on what you'd like guidance on. Clear, honest questions bring the clearest answers. Come with an open heart.</p>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">⏳</div>
+          <h3>Session Time</h3>
+          <p>Please be on time so we can make the most of your slot. Sessions run for the duration you've booked — 30 min, 1 hour or 1.5 hours.</p>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">🤍</div>
+          <h3>Confidentiality</h3>
+          <p>Everything shared in our session stays between us. This is your safe, private space — always without judgment.</p>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">📿</div>
+          <h3>Booking</h3>
+          <p>Fill in the booking form, choose your preferred time, and complete payment to confirm. I'll reach out to you to lock in your slot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== FEEDBACK ========================== -->
+<section id="feedback" class="testimonials">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="script">kind words</span>
+      <h2>Client Feedback</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testi-grid" id="testiGrid"></div>
+  </div>
+</section>
+
+<!-- ========================== CERTIFICATE ========================== -->
+<section id="certificate">
+  <div class="container cert-grid">
+    <div class="cert-img reveal" onclick="openLightbox('certificate.jpg')">
+      <!-- EDIT: add certificate.jpg to your repo -->
+      <img src="certificate.jpg" alt="Tarot certification" onerror="this.src='logo.png'">
+    </div>
+    <div class="cert-text reveal">
+      <span class="script" style="font-size:1.8rem;color:var(--plum-2)">credentials</span>
+      <h2>Certified Tarot Reader</h2>
+      <div class="cert-badge">🎓 <!-- EDIT -->Professional Tarot Reading Certification</div>
+      <!-- EDIT: certificate details -->
+      <p>I have completed formal training in tarot reading, covering the Major and Minor Arcana, spreads, intuitive interpretation and reader ethics. My practice is grounded in both study and compassion.</p>
+      <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Tap the certificate to view it in full size.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== CTA ========================== -->
+<section class="cta" id="contact">
+  <div class="container reveal">
+    <span class="script" style="font-size:2rem;opacity:.9">ready when you are</span>
+    <h2>Let the cards guide your next step</h2>
+    <p>Book your reading today. Once you submit the form, I'll personally reach out to confirm your time and payment details.</p>
+    <button class="btn btn-primary" onclick="openBooking()">✦ Book an Appointment</button>
+  </div>
+</section>
+
+<!-- ========================== FOOTER ========================== -->
+<footer>
+  <div class="container">
+    <img src="logo.png" alt="" class="footer-logo" onerror="this.style.display='none'">
+    <div class="script" style="font-size:1.8rem;color:var(--plum)">tarotwithinins</div>
+    <div class="socials" id="socials"></div>
+    <p style="color:var(--muted);font-size:.9rem">Readings are for guidance and reflection, not a substitute for professional medical, legal or financial advice.</p>
+    <p class="copy">© <span id="year"></span> tarotwithinins · Made with 🤍</p>
+  </div>
+</footer>
+
+<button class="btn btn-primary sticky-book" onclick="openBooking()">✦ Book Now</button>
+
+<!-- ========================== BOOKING MODAL ========================== -->
+<div class="modal" id="bookingModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeBooking()" aria-label="Close">✕</button>
+      <span class="script" style="font-size:1.8rem;color:var(--plum-2)">let's begin</span>
+      <h2>Booking Details</h2>
+      <p>Fill this in and I'll get back to you to confirm your slot 🌙</p>
+    </div>
+
+    <div class="modal-body" id="formWrap">
+      <div class="intro-note">
+        I prioritise creating a safe, compassionate, and judgment‑free space. Through the cards, we explore your situation together — bringing perspective and guidance while allowing you the space to arrive at your own understanding. Fields marked <span style="color:#d46a8a">*</span> are required.
+      </div>
+
+      <form id="bookingForm" action="https://formspree.io/f/xjyvdogb" method="POST" novalidate>
+        <div class="form-grid">
+
+          <div class="field">
+            <label>Email <span>*</span></label>
+            <input type="email" name="Email" required placeholder="you@example.com">
+          </div>
+
+          <div class="field">
+            <label>Full Name <span>*</span></label>
+            <input type="text" name="Full Name" required placeholder="Your full name">
+          </div>
+
+          <div class="field">
+            <label>Age <span>*</span></label>
+            <input type="number" name="Age" required min="13" max="100" placeholder="e.g. 24">
+          </div>
+
+          <div class="field">
+            <label>Where are you booking from? <span>*</span></label>
+            <select name="Country" id="countrySelect" required></select>
+            <div class="country-info" id="countryInfo"></div>
+          </div>
+
+          <div class="field full">
+            <label>Relationship Status <span>*</span></label>
+            <div class="radio-group" id="relGroup"></div>
+          </div>
+
+          <div class="field full reading-options">
+            <label>Your preferred reading? <span>*</span></label>
+            <div class="radio-group" id="readingGroup"></div>
+          </div>
+
+          <div class="field full">
+            <label>Your question? (in detail) <span>*</span></label>
+            <textarea name="Question" required placeholder="Share what's on your mind. The more detail you give, the clearer the guidance."></textarea>
+          </div>
+
+          <div class="field full">
+            <label>Payment Method <span>*</span></label>
+            <div class="radio-group" id="payGroup"></div>
+            <small id="payNote"></small>
+          </div>
+
+          <div class="field full">
+            <label>Tick your preferred time <span>*</span></label>
+            <small style="margin-bottom:6px">Select all slots that work for you. Times are in Nepal Time (NPT, GMT+5:45). Your timezone: <b id="tzLabel">—</b></small>
+            <div style="overflow-x:auto">
+              <table class="time-table" id="timeTable"></table>
+            </div>
+          </div>
+
+          <!-- hidden extras -->
+          <input type="hidden" name="Client Timezone" id="tzField">
+          <input type="hidden" name="Selected Price" id="priceField">
+          <input type="hidden" name="_subject" value="✦ New Tarot Booking – tarotwithinins">
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+
+          <div class="status" id="formStatus"></div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submitBtn">✦ Send Booking Request</button>
+            <small>By submitting, you agree that readings are for guidance only and that your information stays confidential.</small>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="success-view" id="successView">
+      <div class="big">🌙</div>
+      <h3>Thank you, <span id="successName"></span>!</h3>
+      <p>Your booking request has been received. I'll reach out to your email shortly to confirm your slot and share payment details.</p>
+      <button class="btn btn-primary" onclick="closeBooking()">Back to site</button>
+    </div>
+  </div>
+</div>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('show')"><img id="lightboxImg" src="" alt=""></div>
+
+<script>
+/* ============================================================
+   CONFIG — EDIT EVERYTHING HERE
+============================================================ */
+const CONFIG = {
+  // --- Readings (durations & descriptions) ---
+  readings: [
+    { id:"30 minutes", label:"30 Minutes", icon:"🌙", desc:"Ask as many questions as we can comfortably cover within 30 minutes." },
+    { id:"1 Hour",     label:"1 Hour",     icon:"✨", desc:"Ask as many questions as we can comfortably cover within 1 hour.", popular:true },
+    { id:"1.5 Hours",  label:"1.5 Hours",  icon:"🔮", desc:"Ask as many questions as we can comfortably cover within 1.5 hours." }
+  ],
+
+  // --- Country-based pricing & payment (EDIT prices for India / International) ---
+  countries: {
+    "Nepal": {
+      currency:"NPR", symbol:"NPR ",
+      prices:{ "30 minutes":1000, "1 Hour":1700, "1.5 Hours":2400 },
+      payments:["eSewa","Bank transfer"],
+      note:"Payment details will be shared after your booking is confirmed."
+    },
+    "India": {
+      currency:"INR", symbol:"₹",
+      prices:{ "30 minutes":650, "1 Hour":1100, "1.5 Hours":1500 },   // EDIT
+      payments:["UPI","Bank transfer"],                               // EDIT
+      note:"UPI ID / bank details will be shared after confirmation."
+    },
+    "Other (International)": {
+      currency:"USD", symbol:"$",
+      prices:{ "30 minutes":10, "1 Hour":17, "1.5 Hours":24 },        // EDIT
+      payments:["PayPal","Wise","Bank transfer"],                     // EDIT
+      note:"Payment link will be sent to your email after confirmation."
+    }
+  },
+
+  relationship:["Single","In a Relationship","Engaged or Married","Complicated","Divorced"],
+  days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+  slots:["Morning","Afternoon","Evening"],
+
+  // --- Testimonials (EDIT with real feedback) ---
+  testimonials:[
+    { text:"I felt so heard and safe throughout the reading. The guidance was gentle but incredibly accurate — exactly what I needed to move forward.", name:"S. Shrestha", meta:"1 Hour Reading" },
+    { text:"Honestly didn't expect to feel this much clarity in 30 minutes. She takes her time and doesn't rush you at all.", name:"Priya R.", meta:"30 Minute Reading" },
+    { text:"The session felt like a warm conversation with someone who truly cares. I left with perspective and peace.", name:"A. Karki", meta:"1.5 Hour Reading" }
+  ],
+
+  // --- Contact links (EDIT) ---
+  socials:[
+    { icon:"📷", label:"Instagram", url:"https://instagram.com/tarotwithinins" },
+    { icon:"✉️", label:"Email",     url:"mailto:hello@example.com" },
+    { icon:"💬", label:"WhatsApp",  url:"https://wa.me/9779800000000" }
+  ]
+};
+
+/* ============================================================
+   RENDER: readings section with currency switch
+============================================================ */
+const readingGrid = document.getElementById('readingGrid');
+const currencySwitch = document.getElementById('currencySwitch');
+let activeCountry = "Nepal";
+
+function fmt(country, id){
+  const c = CONFIG.countries[country];
+  return c.symbol + c.prices[id].toLocaleString();
+}
+function renderReadings(){
+  readingGrid.innerHTML = CONFIG.readings.map((r,i)=>`
+    <div class="reading-card reveal visible ${r.popular?'popular':''}" style="transition-delay:${i*.1}s">
+      <div class="reading-icon">${r.icon}</div>
+      <h3>${r.label}</h3>
+      <div class="reading-price">${fmt(activeCountry,r.id)}</div>
+      <p>${r.desc}</p>
+      <button class="btn btn-outline" onclick="openBooking('${r.id}')">Book this</button>
+    </div>`).join('');
+}
+function renderSwitch(){
+  currencySwitch.innerHTML = Object.keys(CONFIG.countries).map(k=>
+    `<button class="${k===activeCountry?'active':''}" onclick="setCountry('${k}')">${CONFIG.countries[k].currency}</button>`).join('');
+}
+function setCountry(k){ activeCountry=k; renderSwitch(); renderReadings(); }
+renderSwitch(); renderReadings();
+
+/* testimonials */
+document.getElementById('testiGrid').innerHTML = CONFIG.testimonials.map((t,i)=>`
+  <div class="testi-card reveal" style="transition-delay:${i*.1}s">
+    <div class="testi-stars">★★★★★</div>
+    <p>${t.text}</p>
+    <div class="testi-name">${t.name}<small>${t.meta}</small></div>
+  </div>`).join('');
+
+/* socials */
+document.getElementById('socials').innerHTML = CONFIG.socials.map(s=>
+  `<a href="${s.url}" target="_blank" rel="noopener" title="${s.label}">${s.icon}</a>`).join('');
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   BOOKING FORM BUILD
+============================================================ */
+const countrySelect = document.getElementById('countrySelect');
+const countryInfo = document.getElementById('countryInfo');
+const readingGroup = document.getElementById('readingGroup');
+const payGroup = document.getElementById('payGroup');
+const payNote = document.getElementById('payNote');
+
+countrySelect.innerHTML = Object.keys(CONFIG.countries).map(k=>`<option value="${k}">${k}</option>`).join('');
+
+document.getElementById('relGroup').innerHTML = CONFIG.relationship.map(r=>
+  `<label><input type="radio" name="Relationship Status" value="${r}" required>${r}</label>`).join('');
+
+function updateCountryDependent(keepReading){
+  const k = countrySelect.value, c = CONFIG.countries[k];
+  countryInfo.textContent = `Prices shown in ${c.currency}. Payment options: ${c.payments.join(', ')}.`;
+  readingGroup.innerHTML = CONFIG.readings.map(r=>`
+    <label><input type="radio" name="Preferred Reading" value="${r.label} – ${fmt(k,r.id)}" data-id="${r.id}" required ${keepReading===r.id?'checked':''}>
+      <b>${r.label}</b><em>${fmt(k,r.id)}</em></label>`).join('');
+  payGroup.innerHTML = c.payments.map(p=>
+    `<label><input type="radio" name="Payment Method" value="${p}" required>${p}</label>`).join('');
+  payNote.textContent = c.note;
+  updatePriceField();
+}
+function updatePriceField(){
+  const sel = document.querySelector('input[name="Preferred Reading"]:checked');
+  document.getElementById('priceField').value = sel ? sel.value : '';
+}
+countrySelect.addEventListener('change',()=>{
+  const sel = document.querySelector('input[name="Preferred Reading"]:checked');
+  updateCountryDependent(sel ? sel.dataset.id : null);
+});
+readingGroup.addEventListener('change',updatePriceField);
+updateCountryDependent();
+
+/* time table */
+document.getElementById('timeTable').innerHTML =
+  `<tr><th>Day</th>${CONFIG.slots.map(s=>`<th>${s}</th>`).join('')}</tr>` +
+  CONFIG.days.map(d=>`<tr><td>${d}</td>${CONFIG.slots.map(s=>
+    `<td><input type="checkbox" name="Preferred Time" value="${d} – ${s}"></td>`).join('')}</tr>`).join('');
+
+/* timezone */
+try{
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  document.getElementById('tzLabel').textContent = tz;
+  document.getElementById('tzField').value = tz;
+}catch(e){ document.getElementById('tzLabel').textContent='unknown'; }
+
+/* ============================================================
+   MODAL OPEN / CLOSE
+============================================================ */
+const modal = document.getElementById('bookingModal');
+function openBooking(readingId){
+  if (Object.keys(CONFIG.countries).includes(activeCountry)) {
+    countrySelect.value = activeCountry;
+  }
+  updateCountryDependent(readingId||null);
+  modal.classList.add('show');
+  document.body.style.overflow='hidden';
+  closeMenu();
+}
+function closeBooking(){
+  modal.classList.remove('show');
+  document.body.style.overflow='';
+}
+modal.addEventListener('click',e=>{ if(e.target===modal) closeBooking(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeBooking(); document.getElementById('lightbox').classList.remove('show'); }});
+
+/* ============================================================
+   FORM SUBMIT (AJAX → Formspree)
+============================================================ */
+const form = document.getElementById('bookingForm');
+const statusBox = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async e=>{
+  e.preventDefault();
+  statusBox.className='status';
+
+  // validation
+  if(!form.checkValidity()){
+    form.reportValidity();
+    showStatus('Please fill in all required fields.','err'); return;
+  }
+  if(!form.querySelector('input[name="Preferred Time"]:checked')){
+    showStatus('Please tick at least one preferred time slot.','err'); return;
+  }
+
+  submitBtn.disabled=true; submitBtn.textContent='Sending… ✦';
+  try{
+    const res = await fetch(form.action,{
+      method:'POST',
+      body:new FormData(form),
+      headers:{'Accept':'application/json'}
+    });
+    if(res.ok){
+      document.getElementById('successName').textContent = form['Full Name'].value.split(' ')[0];
+      document.getElementById('formWrap').style.display='none';
+      document.getElementById('successView').style.display='block';
+      form.reset(); updateCountryDependent();
+    }else{
+      const data = await res.json().catch(()=>({}));
+      showStatus(data.errors ? data.errors.map(x=>x.message).join(', ') : 'Something went wrong. Please try again or contact me directly.','err');
+    }
+  }catch(err){
+    showStatus('Network error. Please check your connection and try again.','err');
+  }
+  submitBtn.disabled=false; submitBtn.textContent='✦ Send Booking Request';
+});
+function showStatus(msg,type){ statusBox.textContent=msg; statusBox.className='status '+type; statusBox.scrollIntoView({behavior:'smooth',block:'center'}); }
+
+/* ============================================================
+   NAV / MENU / SCROLL EFFECTS
+============================================================ */
+const nav = document.getElementById('nav');
+const navLinks = document.getElementById('navLinks');
+const hamburger = document.getElementById('hamburger');
+hamburger.addEventListener('click',()=>{ navLinks.classList.toggle('open'); hamburger.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+function closeMenu(){ navLinks.classList.remove('open'); hamburger.classList.remove('open'); }
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+
+/* reveal on scroll */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* stars */
+const starsBox = document.getElementById('stars');
+const glyphs=['✦','✧','·','☆','✶'];
+for(let i=0;i<28;i++){
+  const s=document.createElement('span');
+  s.textContent=glyphs[Math.floor(Math.random()*glyphs.length)];
+  s.style.left=Math.random()*100+'%';
+  s.style.top=Math.random()*100+'%';
+  s.style.fontSize=(8+Math.random()*14)+'px';
+  s.style.animationDelay=(Math.random()*6)+'s';
+  s.style.animationDuration=(5+Math.random()*6)+'s';
+  starsBox.appendChild(s);
+}
+
+/* lightbox */
+function openLightbox(src){
+  document.getElementById('lightboxImg').src=src;
+  document.getElementById('lightbox').classList.add('show');
+}
+</script>
+</body>
+</html>
