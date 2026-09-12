@@ -119,10 +119,15 @@ nav.scrolled{box-shadow:0 4px 20px rgba(74,58,99,.08)}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
 /* ============================================================
-   ABOUT (no image)
+   ABOUT
 ============================================================ */
-.about-grid{display:flex;justify-content:center}
-.about-text{max-width:720px}
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+.about-img{position:relative}
+.about-img img{border-radius:var(--radius);box-shadow:var(--shadow);aspect-ratio:4/5;object-fit:cover}
+.about-img::before{
+  content:"";position:absolute;inset:-14px;border:1.5px solid var(--gold);border-radius:var(--radius);
+  opacity:.5;z-index:-1;transform:rotate(-2deg);
+}
 .about-text h2{font-size:2.4rem;margin-bottom:18px}
 .about-text p{margin-bottom:16px;font-size:1.02rem}
 .about-highlights{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
@@ -174,7 +179,7 @@ nav.scrolled{box-shadow:0 4px 20px rgba(74,58,99,.08)}
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
 .testi-card{background:#fff;border-radius:var(--radius);padding:34px 30px;box-shadow:var(--shadow);position:relative;transition:.3s}
 .testi-card:hover{transform:translateY(-6px)}
-.testi-card::before{content:""";position:absolute;top:8px;left:20px;font-family:'Cormorant Garamond',serif;font-size:5rem;color:var(--pink);line-height:1;opacity:.8}
+.testi-card::before{content:"“";position:absolute;top:8px;left:20px;font-family:'Cormorant Garamond',serif;font-size:5rem;color:var(--pink);line-height:1;opacity:.8}
 .testi-card p{position:relative;font-style:italic;margin-bottom:18px;color:var(--text)}
 .testi-stars{color:var(--gold);letter-spacing:2px;margin-bottom:8px}
 .testi-name{font-weight:600;color:var(--plum)}
@@ -184,7 +189,8 @@ nav.scrolled{box-shadow:0 4px 20px rgba(74,58,99,.08)}
    CERTIFICATE
 ============================================================ */
 .cert-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
-.cert-img{padding:14px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(201,164,92,.3);pointer-events:none}
+.cert-img{padding:14px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(201,164,92,.3);cursor:zoom-in;transition:.3s}
+.cert-img:hover{transform:scale(1.02)}
 .cert-img img{border-radius:12px}
 .cert-text h2{font-size:2.4rem;margin-bottom:16px}
 .cert-badge{display:inline-flex;align-items:center;gap:10px;background:#fdf3e2;color:#8a6a2c;padding:10px 18px;border-radius:30px;font-weight:600;margin-bottom:20px;font-size:.9rem}
@@ -262,34 +268,12 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
 .reading-options .radio-group label b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.3rem}
 .reading-options .radio-group label em{font-style:normal;font-size:.85rem;opacity:.85}
 .country-info{margin-top:6px;font-size:.85rem;color:var(--plum-2);background:var(--lavender-2);padding:8px 12px;border-radius:10px}
-
-/* CALENDAR STYLES */
-.calendar-wrap{background:#fff;border-radius:14px;border:1.5px solid #e6dfe9;padding:16px;margin-top:8px}
-.calendar-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.calendar-nav button{background:none;border:none;color:var(--plum);font-size:1.2rem;cursor:pointer;padding:4px 8px}
-.calendar-nav button:hover{background:var(--lavender-2);border-radius:6px}
-.calendar-nav .month-year{font-weight:600;color:var(--plum);font-size:1rem}
-.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:12px}
-.cal-day-header{text-align:center;font-weight:600;color:var(--plum);font-size:.8rem;padding:6px 0;text-transform:uppercase}
-.cal-day{
-  aspect-ratio:1;display:grid;place-items:center;border-radius:8px;font-size:.85rem;
-  border:1px solid #e6dfe9;cursor:pointer;transition:.2s;background:#fff
-}
-.cal-day:hover:not(.other-month):not(.disabled){background:var(--lavender-2)}
-.cal-day.selected{background:var(--plum);color:#fff;border-color:var(--plum)}
-.cal-day.today{border:2px solid var(--gold)}
-.cal-day.other-month{color:#ccc}
-.cal-day.disabled{opacity:.4;cursor:not-allowed;background:#f5f5f5}
-.time-slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:10px}
-.time-slot{
-  padding:10px 12px;border:1.5px solid #e6dfe9;border-radius:10px;text-align:center;
-  cursor:pointer;font-size:.9rem;transition:.2s;background:#fff
-}
-.time-slot:hover:not(.disabled){background:var(--lavender-2);border-color:var(--lavender)}
-.time-slot input{position:absolute;opacity:0;pointer-events:none}
-.time-slot.selected{background:var(--plum);color:#fff;border-color:var(--plum)}
-.time-slot.disabled{opacity:.4;cursor:not-allowed;background:#f5f5f5}
-
+.time-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:14px;overflow:hidden;border:1.5px solid #e6dfe9}
+.time-table th,.time-table td{padding:10px 8px;text-align:center;font-size:.9rem;border-bottom:1px solid #f1ecf3}
+.time-table th{background:var(--lavender-2);color:var(--plum);font-weight:600}
+.time-table td:first-child{text-align:left;font-weight:600;color:var(--plum);padding-left:14px}
+.time-table tr:last-child td{border-bottom:none}
+.time-table input{width:20px;height:20px;accent-color:var(--plum);cursor:pointer}
 .form-actions{grid-column:1/-1;margin-top:10px;display:flex;flex-direction:column;align-items:center;gap:12px}
 .form-actions .btn{width:100%;justify-content:center;font-size:1.05rem;padding:16px}
 .form-actions small{color:var(--muted);text-align:center;font-size:.82rem}
@@ -302,6 +286,11 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
 .success-view p{color:var(--muted);max-width:460px;margin:0 auto 24px}
 .hp{position:absolute;left:-9999px;opacity:0}
 
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:300;display:none;place-items:center;padding:20px;cursor:zoom-out}
+.lightbox.show{display:grid}
+.lightbox img{max-height:90vh;border-radius:12px}
+
 /* ============================================================
    REVEAL ANIMATION
 ============================================================ */
@@ -312,7 +301,9 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
    RESPONSIVE
 ============================================================ */
 @media(max-width:900px){
-  .cert-grid{grid-template-columns:1fr;gap:36px}
+  .about-grid,.cert-grid{grid-template-columns:1fr;gap:36px}
+  .about-img{max-width:380px;margin:0 auto}
+  .note-wrap{padding:50px 28px}
 }
 @media(max-width:768px){
   section{padding:70px 0}
@@ -329,6 +320,7 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   .modal-body{padding:24px 20px 34px}
   .modal-head{padding:30px 20px 22px}
   .modal{padding:10px}
+  .time-table th,.time-table td{padding:8px 4px;font-size:.82rem}
   .cta{padding-bottom:110px}
   footer{padding-bottom:90px}
 }
@@ -373,9 +365,12 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   </div>
 </header>
 
-<!-- ================= ABOUT (no image) ================= -->
+<!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="container about-grid">
+    <div class="about-img reveal">
+      <img src="about.jpg" alt="Tarot reader"> <!-- EDIT: confirm your about photo filename -->
+    </div>
     <div class="about-text reveal">
       <span class="script" style="color:var(--plum-2);font-size:1.6rem">about me</span>
       <h2>Hello, I'm your reader ✨</h2>
@@ -454,10 +449,10 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   </div>
 </section>
 
-<!-- ================= CERTIFICATE (view-only) ================= -->
+<!-- ================= CERTIFICATE ================= -->
 <section id="certificate">
   <div class="container cert-grid">
-    <div class="cert-img reveal">
+    <div class="cert-img reveal" onclick="window.open('certificate.pdf','_blank')">
       <embed src="certificate.pdf" type="application/pdf"
              style="width:100%;height:420px;border-radius:12px;pointer-events:none">
     </div>
@@ -466,7 +461,7 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
       <h2>Certified Tarot Reader</h2>
       <div class="cert-badge">🎓 Professional Tarot Reading Certification</div>
       <p>I have completed formal training in tarot reading, covering the Major and Minor Arcana, spreads, intuitive interpretation and reader ethics. My practice is grounded in both study and compassion.</p>
-      <p style="color:var(--muted);font-size:.9rem;margin-top:14px">View the certificate above.</p>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:14px">Tap the certificate to view it in full size.</p>
     </div>
   </div>
 </section>
@@ -481,7 +476,7 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
   </div>
 </section>
 
-<!-- ================= FOOTER / CONTACT (Instagram only) ================= -->
+<!-- ================= FOOTER / CONTACT ================= -->
 <footer id="contact">
   <div class="container">
     <img src="logo.png" class="footer-logo" alt="tarotwithinins logo">
@@ -555,18 +550,11 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
       </div>
 
       <div class="field full">
-        <label>Choose your preferred date & time <span>*</span></label>
-        <small style="margin-bottom:6px">Times shown in <b>Berlin, Germany (CEST/CET)</b>. Your timezone: <b id="tzLabel">—</b></small>
-        <div class="calendar-wrap">
-          <div class="calendar-nav">
-            <button type="button" id="prevMonth">‹</button>
-            <div class="month-year" id="monthYear"></div>
-            <button type="button" id="nextMonth">›</button>
-          </div>
-          <div class="calendar-grid" id="calendarGrid"></div>
-          <div class="time-slots" id="timeSlots"></div>
+        <label>Tick your preferred time <span>*</span></label>
+        <small style="margin-bottom:6px">Select all slots that work for you. Times are in Nepal Time (NPT, GMT+5:45). Your timezone: <b id="tzLabel">—</b></small>
+        <div style="overflow-x:auto">
+          <table class="time-table" id="timeTable"></table>
         </div>
-        <input type="hidden" name="Selected Date & Time" id="dateTimeField">
       </div>
 
       <!-- hidden extras -->
@@ -593,6 +581,11 @@ footer{padding:50px 0 30px;text-align:center;background:var(--cream-2)}
 </div>
 
   </div>
+</div>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('show')">
+  <img id="lightboxImg" alt="">
 </div>
 
 <script>
@@ -624,6 +617,8 @@ const CONFIG = {
   },
 
   relationship:["Single","In a Relationship","Engaged or Married","Complicated","Divorced"],
+  days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+  slots:["Morning","Afternoon","Evening"],
 
   // --- Testimonials (EDIT: write your real feedback here) ---
   testimonials:[
@@ -632,9 +627,11 @@ const CONFIG = {
     { text:"WRITE THE THIRD REAL FEEDBACK HERE.", name:"Client name or initials", meta:"e.g. 1.5 Hour Reading" }
   ],
 
-  // --- Contact links (Instagram only) ---
+  // --- Contact links ---
   socials:[
-    { icon:"✨", label:"Instagram", url:"https://www.instagram.com/tarotwithnins?stkn=ZHpsY2FyMGJ6OHdv&utm_source=qr" }
+    { icon:"📷", label:"Instagram", url:"https://www.instagram.com/tarotwithnins?stkn=ZHpsY2FyMGJ6OHdv&utm_source=qr" },
+    { icon:"✉️", label:"Email",     url:"mailto:hello@example.com" },          // EDIT your email
+    { icon:"💬", label:"WhatsApp",  url:"https://wa.me/9779800000000" }        // EDIT your WhatsApp number
   ]
 };
 
@@ -709,97 +706,11 @@ countrySelect.addEventListener('change',()=>{
 readingGroup.addEventListener('change',updatePriceField);
 updateCountryDependent();
 
-/* ============================================================
-   CALENDAR & TIME PICKER (Berlin Time)
-============================================================ */
-let currentMonth = new Date();
-let selectedDate = null;
-
-function renderCalendar(){
-  const year = currentMonth.getFullYear();
-  const month = currentMonth.getMonth();
-  
-  document.getElementById('monthYear').textContent = 
-    currentMonth.toLocaleDateString('en-US', {month:'long', year:'numeric'});
-  
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const daysInPrevMonth = new Date(year, month, 0).getDate();
-  
-  let html = '';
-  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  dayNames.forEach(d => html += `<div class="cal-day-header">${d}</div>`);
-  
-  for(let i = firstDay - 1; i >= 0; i--){
-    html += `<div class="cal-day other-month">${daysInPrevMonth - i}</div>`;
-  }
-  
-  const today = new Date();
-  today.setHours(0,0,0,0);
-  
-  for(let d = 1; d <= daysInMonth; d++){
-    const date = new Date(year, month, d);
-    const isToday = date.getTime() === today.getTime();
-    const isPast = date < today;
-    const isSelected = selectedDate && date.getTime() === selectedDate.getTime();
-    
-    let cls = 'cal-day';
-    if(isToday) cls += ' today';
-    if(isPast) cls += ' disabled';
-    if(isSelected) cls += ' selected';
-    
-    html += `<div class="${cls}" onclick="${isPast?'':'selectDate(new Date('+year+','+month+','+d+'))'}">${d}</div>`;
-  }
-  
-  const remainingDays = 42 - (firstDay + daysInMonth);
-  for(let i = 1; i <= remainingDays; i++){
-    html += `<div class="cal-day other-month">${i}</div>`;
-  }
-  
-  document.getElementById('calendarGrid').innerHTML = html;
-  renderTimeSlots();
-}
-
-function selectDate(date){
-  selectedDate = new Date(date);
-  renderCalendar();
-}
-
-function renderTimeSlots(){
-  if(!selectedDate){
-    document.getElementById('timeSlots').innerHTML = '';
-    return;
-  }
-  
-  const times = ['09:00','10:00','11:00','14:00','15:00','16:00','17:00','18:00','19:00'];
-  const html = times.map(t=>
-    `<label class="time-slot"><input type="radio" name="Selected Date & Time" value="${selectedDate.toDateString()} at ${t} (Berlin Time)" required>${t}</label>`
-  ).join('');
-  
-  document.getElementById('timeSlots').innerHTML = html;
-  
-  document.querySelectorAll('.time-slot').forEach(el=>{
-    el.addEventListener('change',()=>{
-      document.querySelectorAll('.time-slot').forEach(x=>x.classList.remove('selected'));
-      el.classList.add('selected');
-      document.getElementById('dateTimeField').value = el.querySelector('input').value;
-    });
-  });
-}
-
-document.getElementById('prevMonth').addEventListener('click',e=>{
-  e.preventDefault();
-  currentMonth.setMonth(currentMonth.getMonth()-1);
-  renderCalendar();
-});
-
-document.getElementById('nextMonth').addEventListener('click',e=>{
-  e.preventDefault();
-  currentMonth.setMonth(currentMonth.getMonth()+1);
-  renderCalendar();
-});
-
-renderCalendar();
+/* time table */
+document.getElementById('timeTable').innerHTML =
+  `<tr><th>Day</th>${CONFIG.slots.map(s=>`<th>${s}</th>`).join('')}</tr>` +
+  CONFIG.days.map(d=>`<tr><td>${d}</td>${CONFIG.slots.map(s=>
+    `<td><input type="checkbox" name="Preferred Time" value="${d} – ${s}"></td>`).join('')}</tr>`).join('');
 
 /* timezone */
 try{
@@ -826,7 +737,7 @@ function closeBooking(){
   document.body.style.overflow='';
 }
 modal.addEventListener('click',e=>{ if(e.target===modal) closeBooking(); });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeBooking(); }});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeBooking(); document.getElementById('lightbox').classList.remove('show'); }});
 
 /* ============================================================
    FORM SUBMIT (AJAX → Formspree)
@@ -844,8 +755,8 @@ form.addEventListener('submit', async e=>{
     form.reportValidity();
     showStatus('Please fill in all required fields.','err'); return;
   }
-  if(!document.querySelector('input[name="Selected Date & Time"]:checked')){
-    showStatus('Please select a date and time.','err'); return;
+  if(!form.querySelector('input[name="Preferred Time"]:checked')){
+    showStatus('Please tick at least one preferred time slot.','err'); return;
   }
 
   submitBtn.disabled=true; submitBtn.textContent='Sending… ✦';
@@ -859,7 +770,7 @@ form.addEventListener('submit', async e=>{
       document.getElementById('successName').textContent = form['Full Name'].value.split(' ')[0];
       document.getElementById('formWrap').style.display='none';
       document.getElementById('successView').style.display='block';
-      form.reset(); updateCountryDependent(); currentMonth = new Date(); selectedDate = null; renderCalendar();
+      form.reset(); updateCountryDependent();
     }else{
       const data = await res.json().catch(()=>({}));
       showStatus(data.errors ? data.errors.map(x=>x.message).join(', ') : 'Something went wrong. Please try again or contact me directly.','err');
@@ -900,6 +811,12 @@ for(let i=0;i<28;i++){
   s.style.animationDelay=(Math.random()*6)+'s';
   s.style.animationDuration=(5+Math.random()*6)+'s';
   starsBox.appendChild(s);
+}
+
+/* lightbox */
+function openLightbox(src){
+  document.getElementById('lightboxImg').src=src;
+  document.getElementById('lightbox').classList.add('show');
 }
 </script>
 </body>
