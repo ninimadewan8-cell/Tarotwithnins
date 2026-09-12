@@ -698,25 +698,24 @@ const readingGroup = document.getElementById('readingGroup');
 const payGroup = document.getElementById('payGroup');
 const payNote = document.getElementById('payNote');
 
-countrySelect.innerHTML = Object.keys(CONFIG.countries).map(k=>`<option value="${k}">${k}</option>`).join('');
+countrySelect.innerHTML = '<option value="">Select where you\'re booking from</option>' + Object.keys(CONFIG.countries).map(k=>`<option value="${k}">${k}</option>`).join('');
+
 
 document.getElementById('relGroup').innerHTML = CONFIG.relationship.map(r=>
   `<label><input type="radio" name="Relationship Status" value="${r}" required>${r}</label>`).join('');
 
 function updateCountryDependent(keepReading){
-  const k = countrySelect.value, c = CONFIG.countries[k];
-  
-  // Show/hide reading options based on country selection
-  if(k){
-    document.getElementById('readingContainer').style.display = 'block';
-    document.getElementById('countryInfo').style.display = 'block';
-  } else {
+  const k = countrySelect.value;
+  if(!k) {
     document.getElementById('readingContainer').style.display = 'none';
     document.getElementById('countryInfo').style.display = 'none';
+    return;
   }
+  document.getElementById('readingContainer').style.display = 'block';
+  document.getElementById('countryInfo').style.display = 'block';
   
+  const c = CONFIG.countries[k];
   countryInfo.textContent = `Prices shown in ${c.currency}. Payment options: ${c.payments.join(', ')}.`;
-  readingGroup.innerHTML = CONFIG.readings.map(r=>`...
 
     <label><input type="radio" name="Preferred Reading" value="${r.label} – ${fmt(k,r.id)}" data-id="${r.id}" required ${keepReading===r.id?'checked':''}>
       <b>${r.label}</b><em>${fmt(k,r.id)}</em></label>`).join('');
